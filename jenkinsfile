@@ -1,6 +1,5 @@
 node('jdk-maveb') {
-    
-}
+
 stage('git') {
     git 'https://github.com/chinthasaeaswathi/java11-examples.git'
 }
@@ -12,4 +11,5 @@ stage('archive') {
 }
 stage('publish test results') {
     junit '**TEST-/.xml'
+}
 }
