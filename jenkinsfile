@@ -1,0 +1,15 @@
+node('jdk-maveb') {
+    
+}
+stage('git') {
+    git 'https://github.com/chinthasaeaswathi/java11-examples.git'
+}
+stage('build') {
+    sh 'mvn clean package'
+}
+stage('archive') {
+    archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+}
+stage('publish test results') {
+    junit '**TEST-/.xml'
+}
